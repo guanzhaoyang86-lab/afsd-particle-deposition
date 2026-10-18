@@ -1,0 +1,302 @@
+{
+  "schema_version": "0.1.0",
+  "configuration_role": "case",
+  "extends": "../base.json",
+  "case_id": "starved",
+  "intended_run_classification": "APPROXIMATE",
+  "variant": "REVIEW_APPROX_CORRECTED_WORK_CONJUGATE_CONTACT_MIDPOINT_SPACE_HALF",
+  "parameters": {
+    "debug": {
+      "dx": {
+        "value": 0.00025,
+        "unit": "m",
+        "source": "VALIDATION_CONTRACT v1 pre-registered grid sensitivity; fixed physical geometry and boundary",
+        "status": "ASSUMED"
+      },
+      "h_ratio": {
+        "value": 1.3,
+        "unit": "1",
+        "source": "D02: assumed support ratio; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "rho0": {
+        "value": 2700,
+        "unit": "kg/m^3",
+        "source": "P0 Table 1; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "shear": {
+        "value": 26300000000,
+        "unit": "Pa",
+        "source": "P0 Table 1; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "poisson": {
+        "value": 0.33,
+        "unit": "1",
+        "source": "P0 Table 1; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "width": {
+        "value": 0.0025,
+        "unit": "m",
+        "source": "D01: scaled DEBUG bar, NOT paper 9.53mm; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "bar_length": {
+        "value": 0.0045,
+        "unit": "m",
+        "source": "D01; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "substrate_width": {
+        "value": 0.006,
+        "unit": "m",
+        "source": "D01; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "substrate_depth": {
+        "value": 0.0015,
+        "unit": "m",
+        "source": "D01; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "bore_width": {
+        "value": 0.002496,
+        "unit": "m",
+        "source": "D03: 2 micrometre interference per face; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "tool_radius": {
+        "value": 0.0027,
+        "unit": "m",
+        "source": "D01; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "tool_top": {
+        "value": 0.004,
+        "unit": "m",
+        "source": "D01; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "temperature": {
+        "value": 723.15,
+        "unit": "K",
+        "source": "D04: imposed initial preheat, not simulated history; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "base_temperature": {
+        "value": 703.15,
+        "unit": "K",
+        "source": "D04: fixed reservoir; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "tool_temperature": {
+        "value": 733.15,
+        "unit": "K",
+        "source": "D04: fixed reservoir; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "conductivity": {
+        "value": 167,
+        "unit": "W/(m*K)",
+        "source": "D05: constant DEBUG assumption; P40 k(T) not obtained; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "cp": {
+        "value": 900,
+        "unit": "J/(kg*K)",
+        "source": "D05: constant DEBUG assumption; P40 Cp(T) not obtained; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "friction": {
+        "value": 0.3,
+        "unit": "1",
+        "source": "D06: assumed sliding coefficient; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "penalty_factor": {
+        "value": 0.05,
+        "unit": "1",
+        "source": "D06: kn=factor*G*dx; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "contact_conductance": {
+        "value": 1000,
+        "unit": "W/(m^2*K)",
+        "source": "D07: assumed imperfect contact; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "heat_partition": {
+        "value": 0.5,
+        "unit": "1",
+        "source": "D07: equal-effusivity limit of P44 Eq3-110; not measured tool; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "plastic_heat_fraction": {
+        "value": 1,
+        "unit": "1",
+        "source": "P44 Eq3-106 discussion chi=1, transferred assumption; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "a1": {
+        "value": 317600000,
+        "unit": "Pa",
+        "source": "P0 p14 Table2 visually checked; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "a2": {
+        "value": 1000000,
+        "unit": "Pa",
+        "source": "P0 p14 Table2; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "a3": {
+        "value": 70,
+        "unit": "1",
+        "source": "P0 p14 Table2; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "b1": {
+        "value": 12.44,
+        "unit": "1",
+        "source": "D08: dimensionless Eq6 interpretation conflicts with MPa in Table2; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "b2": {
+        "value": 5.65,
+        "unit": "1",
+        "source": "P0 p14 Table2; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "c1": {
+        "value": 13,
+        "unit": "1",
+        "source": "P0 p14 Table2; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "c2": {
+        "value": 0.01,
+        "unit": "1",
+        "source": "P0 p14 Table2; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "room": {
+        "value": 293.15,
+        "unit": "K",
+        "source": "D08: assumed reference temperature; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "melt": {
+        "value": 855.15,
+        "unit": "K",
+        "source": "D08: assumed solidus/domain upper limit; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "reference_rate": {
+        "value": 1,
+        "unit": "1/s",
+        "source": "D08: reference rate unavailable from P41; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "rate_floor": {
+        "value": 1,
+        "unit": "1/s",
+        "source": "D08: explicit low-rate regularization, counters output; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "cfl": {
+        "value": 0.1,
+        "unit": "1",
+        "source": "VALIDATION_CONTRACT v1 pre-registered numerical sensitivity; no physical time scaling",
+        "status": "ASSUMED"
+      },
+      "density_limit": {
+        "value": 0.05,
+        "unit": "1",
+        "source": "D10: fail if relative density change exceeds5%; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "penetration_limit": {
+        "value": 0.1,
+        "unit": "1",
+        "source": "D10: fail if overlap/dx exceeds10%; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "energy_relative_limit": {
+        "value": 0.05,
+        "unit": "1",
+        "source": "D10: fail if residual exceeds5% exchanged-energy scale plus absolute floor; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "energy_absolute_limit": {
+        "value": 1e-7,
+        "unit": "J",
+        "source": "D10: numerical joule tolerance; dimensionful value encoded below separately; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "max_speed": {
+        "value": 20,
+        "unit": "m/s",
+        "source": "D10: fail-fast DEBUG limit; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "wall_seconds": {
+        "value": 600,
+        "unit": "s",
+        "source": "User default wall cap; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "marker_low": {
+        "value": 0.003,
+        "unit": "m",
+        "source": "P0 Fig5 local band; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "marker_high": {
+        "value": 0.004,
+        "unit": "m",
+        "source": "P0 Fig5 local band; docs/PARAMETER_SOURCES.md",
+        "status": "PAPER_CONFIRMED"
+      },
+      "lift_speed": {
+        "value": 0,
+        "unit": "m/s",
+        "source": "D04: no lift in bounded hot-start microsecond probe; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "dwell_duration": {
+        "value": 0,
+        "unit": "s",
+        "source": "D04: hot-start explicitly omits dwell history; docs/PARAMETER_SOURCES.md",
+        "status": "ASSUMED"
+      },
+      "actuator_depth": {
+        "value": 0.0005,
+        "unit": "m",
+        "source": "Review fix R03: fixed physical top-cap depth, equal to original coarse case; VALIDATION_CONTRACT v1",
+        "status": "ASSUMED"
+      },
+      "contact_reference_spacing": {
+        "value": 0.0005,
+        "unit": "m",
+        "source": "Review fix R03: kn/dx^2=penalty_factor*G/reference_spacing; frozen physical boundary",
+        "status": "ASSUMED"
+      },
+      "spatial_operator": {
+        "value": "corrected_work_conjugate",
+        "unit": "1",
+        "source": "Review fix R04: independently tested first-order completeness and adjoint force; NOT verbatim P0 Table1",
+        "status": "ASSUMED"
+      }
+    },
+    "process": {
+      "feedstock_axial_speed": {
+        "value": 0.00106,
+        "unit": "m/s",
+        "source": "P0 p4 axial feed, p6 wording conflict A01",
+        "status": "PAPER_CONFIRMED"
+      }
+    }
+  }
+}

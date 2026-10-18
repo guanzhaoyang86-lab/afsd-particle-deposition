@@ -1,0 +1,20 @@
+{
+  "classification": "ENGINEERING_APPROXIMATE_QUASISTATIC_SMALL_STRAIN_TWO_WALL_BENCHMARK",
+  "production_authorized": false,
+  "parent": "configs/benchmarks/process_contact_q3.json",
+  "parameters": {
+    "length": {"value": 0.01, "unit": "m", "source": "unchanged Q3 manufactured cube", "status": "MANUFACTURED_NOT_AFSD"},
+    "wall_minimum": {"value": -0.00004, "unit": "m", "source": "Q3 wall amplitude applied separately to x and y", "status": "PRESCRIBED_RIGID_BOUNDARY"},
+    "peak_time": {"value": 0.1, "unit": "s", "source": "unchanged Q3 compression time", "status": "ASSUMED_BENCHMARK"},
+    "end_time": {"value": 0.2, "unit": "s", "source": "unchanged Q3 total physical program duration", "status": "ASSUMED_BENCHMARK"},
+    "staggered_y_return_start": {"value": 0.15, "unit": "s", "source": "Q4 manufactured asynchronous release to expose partial-contact states", "status": "ASSUMED_BENCHMARK"}
+  },
+  "wall_axes": [0,1],
+  "wall_normals": [[-1,0,0],[0,-1,0]],
+  "programs": ["symmetric","staggered"],
+  "boundary": "Only zero-face normal rollers. Candidate rows are (persistent particle_id, feature_id=1 or2). Three edge particles each have TWO contact rows/normal DOFs. Tangential components are not constrained by a wall.",
+  "cases": [["elastic","staggered",8],["j2","symmetric",8],["j2","staggered",8],["j2","staggered",16]],
+  "numerical": "Reuse Q3 tolerances and bounded iteration limits unchanged; check work separately PER WALL, not just the cancelling sum.",
+  "run_timeout_s": 60,
+  "not_solved": ["friction", "thermal", "inertia", "FKS_contact", "finite_strain_density", "arbitrary_rotating_tool_contact", "AFSD", "production_restart"]
+}

@@ -1,0 +1,18 @@
+{
+  "classification": "ENGINEERING_APPROXIMATE_QUASISTATIC_TWO_TANGENT_CONE_BENCHMARK",
+  "production_authorized": false,
+  "parent": "configs/benchmarks/process_friction_q5.json",
+  "parameters": {
+    "mu": {"value": 0.1, "unit": "1", "source": "unchanged Q5 manufactured coefficient", "status": "ASSUMED_NOT_CALIBRATED"},
+    "normal_displacement": {"value": -0.00004, "unit": "m", "source": "unchanged Q5 preload/hold", "status": "PRESCRIBED_RIGID_BOUNDARY"},
+    "tangent_amplitude": {"value": 0.00002, "unit": "m", "source": "Q5 amplitude, now vector magnitude", "status": "MANUFACTURED"},
+    "tangent_direction_global_yz": {"value": [0.6,0.8], "unit": "1", "source": "3-4-5 oblique direction; only rigid wall prescribed", "status": "MANUFACTURED"},
+    "phase_duration": {"value": 0.05, "unit": "s", "source": "unchanged Q5 four-phase program", "status": "MANUFACTURED"},
+    "kappa": {"value": 700000000, "unit": "N/m", "source": "E*L numerical natural-map scaling; exact roots independent of this value", "status": "NUMERICAL_NOT_MATERIAL_OR_PENALTY"}
+  },
+  "boundary": "Same Q5 X0 clamped cube and compressed X+ wall; BOTH Y/Z tangents Coulomb with circular norm limit. Old Q5 Z-frictionfree results are a different problem.",
+  "cases": [[4,0],[8,0],[4,37]],
+  "numerical": "Inherit Q5 force/slip/work/negative-Q/event limits unchanged. Both tangents coupled through actual material tangent. Basis angle is representation only, not a changed wall direction.",
+  "run_timeout_s": 60,
+  "not_solved": ["normal_release_recontact", "plasticity_with_friction", "thermal", "inertia", "rotating_normal_or_tool", "arbitrary_curved_slip_path", "AFSD", "production_restart", "spatial_convergence"]
+}

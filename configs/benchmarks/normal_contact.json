@@ -1,0 +1,59 @@
+{
+  "classification": "MANUFACTURED_NORMAL_IMPACT_NOT_AFSD",
+  "production_authorized": false,
+  "parameters": {
+    "mass": {
+      "value": 1,
+      "unit": "kg",
+      "source": "independent unit mass benchmark",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "stiffness": {
+      "value": 4,
+      "unit": "N/m",
+      "source": "independent oscillator omega=2/s",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "radius": {
+      "value": 1,
+      "unit": "m",
+      "source": "independent 1D contact coordinate offset",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "initial_gap": {
+      "value": 1,
+      "unit": "m",
+      "source": "starts at first touch",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "initial_relative_normal_velocity": {
+      "value": -1,
+      "unit": "m/s",
+      "source": "prescribed initial approach",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "friction": {
+      "value": 0,
+      "unit": "1",
+      "source": "normal-only benchmark; explicitly no friction",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "end_time": {
+      "value": 2,
+      "unit": "s",
+      "source": "includes separation pi/2 and free flight",
+      "status": "MANUFACTURED_APPROXIMATE"
+    }
+  },
+  "dt_cases_s": [
+    0.005,
+    0.0025
+  ],
+  "wall_speed_cases_m_s": [
+    0,
+    0.2
+  ],
+  "source": "docs/NORMAL_CONTACT_CONTRACT.md",
+  "run_timeout_s": 50,
+  "external_timeout_s": 60
+}

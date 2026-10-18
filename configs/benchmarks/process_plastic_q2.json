@@ -1,0 +1,18 @@
+{
+  "classification": "ENGINEERING_APPROXIMATE_QUASISTATIC_SMALL_STRAIN_PLASTIC_BENCHMARK",
+  "production_authorized": false,
+  "geometry_elastic_parent": "configs/benchmarks/engineering_block_e2.json",
+  "parameters": {
+    "peak_compressive_strain": {"value": 0.004, "unit": "1", "source": "Q2 manufactured compression-return, not AFSD feed", "status": "PRESCRIBED_BOUNDARY"},
+    "phase_duration": {"value": 0.1, "unit": "s", "source": "Q2 physical loading and return durations", "status": "ASSUMED_BENCHMARK"},
+    "j2_yield": {"value": 90000000.0, "unit": "Pa", "source": "E1 perfect plastic manufactured law, reused for independent reference", "status": "MANUFACTURED_NOT_AA6061"},
+    "j2_temperature": {"value": 293.15, "unit": "K", "source": "E1/E2 isothermal prescribed input", "status": "PRESCRIBED_NOT_SOLVED"},
+    "fks_temperature": {"value": 723.15, "unit": "K", "source": "existing debug preheat D04; no thermal solve", "status": "APPROXIMATE_PRESCRIBED"}
+  },
+  "boundary": "X=0:ux=0,Y=0:uy=0,Z=0:uz=0; X=L:ux prescribed 0 to -0.004L to0. Tangential DOFs remain free. Bilateral actuator, no unilateral contact.",
+  "fks_variant": "original material.FKS defaults including dimensionless b1 and1/s rate floor; E70GPa/nu0 remain MANUFACTURED, not production material calibration",
+  "numerical": {"local_gradient_difference": 1e-7, "force_relative": 1e-8, "maximum_iterations": 12, "line_search_halvings": 8, "tangent_condition_limit": 1e12, "displacement_over_length_limit": 0.02},
+  "cases": [["j2",3,8],["j2",3,16],["j2",5,8],["fks",3,8]],
+  "run_timeout_s": 60,
+  "not_solved": ["inertia", "thermal", "contact", "free_unloaded_release", "finite_strain_density", "AFSD", "production_restart"]
+}

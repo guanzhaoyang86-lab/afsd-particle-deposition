@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/afsd/particle-record.schema.json",
+  "title": "Logical AFSD particle record (storage-format independent)",
+  "type": "object",
+  "required": [
+    "particle_id",
+    "initial_position_m",
+    "position_m",
+    "material_id",
+    "tracer_type",
+    "component_id"
+  ],
+  "properties": {
+    "particle_id": { "type": "integer", "minimum": 0 },
+    "initial_position_m": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "position_m": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "material_id": { "type": "integer", "minimum": 0 },
+    "tracer_type": { "type": "integer", "minimum": 0 },
+    "component_id": { "type": "integer", "minimum": 0 },
+    "velocity_m_per_s": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "temperature_K": { "type": "number" },
+    "density_kg_per_m3": { "type": "number" },
+    "stress_Pa": {
+      "description": "Symmetric tensor order xx, yy, zz, xy, yz, xz",
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "equivalent_plastic_strain": { "type": "number", "minimum": 0 }
+  },
+  "additionalProperties": true
+}

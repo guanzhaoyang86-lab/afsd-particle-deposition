@@ -1,0 +1,350 @@
+{
+  "$schema": "../schemas/afsd-case.schema.json",
+  "schema_version": "0.1.0",
+  "configuration_role": "base",
+  "calculation_units": {
+    "system": "SI",
+    "length": "m",
+    "time": "s",
+    "mass": "kg",
+    "temperature": "K",
+    "angle": "rad",
+    "stress": "Pa"
+  },
+  "display_units": {
+    "length": "mm",
+    "feed_speed": "mm/s",
+    "rotation_rate": "rpm",
+    "stress": "MPa",
+    "temperature": "degC"
+  },
+  "parameters": {
+    "process": {
+      "tool_angular_speed": {
+        "value": 31.41592653589793,
+        "unit": "rad/s",
+        "source": "DERIVED from P0 p.4, 300 rpm = 10*pi rad/s",
+        "status": "DERIVED"
+      },
+      "tool_traverse_speed": {
+        "value": 0.00212,
+        "unit": "m/s",
+        "source": "P0 p.4; PAPER_SPEC section 1",
+        "status": "PAPER_CONFIRMED"
+      },
+      "feedstock_axial_speed": {
+        "value": null,
+        "unit": "m/s",
+        "source": "Set by each case; see ASSUMPTIONS A01",
+        "status": "UNRESOLVED"
+      },
+      "layer_height": {
+        "value": 0.0015,
+        "unit": "m",
+        "source": "P0 pp.4,6; PAPER_SPEC section 1",
+        "status": "PAPER_CONFIRMED"
+      },
+      "startup_dwell_duration": {
+        "value": null,
+        "unit": "s",
+        "source": "P0 does not fully specify the simulated startup program; ASSUMPTIONS A06",
+        "status": "UNRESOLVED"
+      },
+      "deposition_path_length": {
+        "value": null,
+        "unit": "m",
+        "source": "P0 does not give a uniquely reproducible simulated path; ASSUMPTIONS A06",
+        "status": "UNRESOLVED"
+      }
+    },
+    "geometry": {
+      "feedstock_width": {
+        "value": 0.00953,
+        "unit": "m",
+        "source": "P0 p.4; square feedstock 9.53 x 9.53 mm^2",
+        "status": "PAPER_CONFIRMED"
+      },
+      "feedstock_depth": {
+        "value": 0.00953,
+        "unit": "m",
+        "source": "P0 p.4; square feedstock 9.53 x 9.53 mm^2",
+        "status": "PAPER_CONFIRMED"
+      },
+      "experimental_feedstock_length": {
+        "value": 0.1524,
+        "unit": "m",
+        "source": "P0 p.4; experimental bar length only",
+        "status": "PAPER_CONFIRMED"
+      },
+      "simulation_feedstock_length": {
+        "value": null,
+        "unit": "m",
+        "source": "Not uniquely specified by P0; ASSUMPTIONS A05",
+        "status": "UNRESOLVED"
+      },
+      "tool_bore_shape": {
+        "value": "square",
+        "unit": "1",
+        "source": "P0 pp.2-3 and PAPER_SPEC section 1",
+        "status": "PAPER_CONFIRMED"
+      },
+      "tool_outer_diameter": {
+        "value": null,
+        "unit": "m",
+        "source": "Not specified in P0; ASSUMPTIONS A05",
+        "status": "UNRESOLVED"
+      },
+      "substrate_length": {
+        "value": null,
+        "unit": "m",
+        "source": "Not uniquely recoverable from particle count; ASSUMPTIONS A05",
+        "status": "UNRESOLVED"
+      },
+      "substrate_width": {
+        "value": null,
+        "unit": "m",
+        "source": "Not uniquely recoverable from particle count; ASSUMPTIONS A05",
+        "status": "UNRESOLVED"
+      },
+      "substrate_thickness": {
+        "value": null,
+        "unit": "m",
+        "source": "Not uniquely recoverable from particle count; ASSUMPTIONS A05",
+        "status": "UNRESOLVED"
+      },
+      "nominal_particle_spacing": {
+        "value": 0.001,
+        "unit": "m",
+        "source": "P0 p.5 states approximately 1 mm; trajectory figure also suggests approximately 0.95 mm",
+        "status": "PAPER_CONFIRMED"
+      },
+      "substrate_particle_count": {
+        "value": 69312,
+        "unit": "1",
+        "source": "P0 pp.5-6",
+        "status": "PAPER_CONFIRMED"
+      },
+      "feedstock_particle_count": {
+        "value": 11000,
+        "unit": "1",
+        "source": "P0 pp.5-6",
+        "status": "PAPER_CONFIRMED"
+      },
+      "tool_triangle_count": {
+        "value": 16598,
+        "unit": "1",
+        "source": "P0 pp.5-6; count does not reconstruct the mesh",
+        "status": "PAPER_CONFIRMED"
+      },
+      "base_triangle_count": {
+        "value": 31238,
+        "unit": "1",
+        "source": "P0 pp.5-6; count does not reconstruct the mesh",
+        "status": "PAPER_CONFIRMED"
+      },
+      "substrate_body_type": {
+        "value": "deformable_3d",
+        "unit": "1",
+        "source": "P0 pp.5-6; AGENTS.md target constraint",
+        "status": "PAPER_CONFIRMED"
+      },
+      "tool_body_type": {
+        "value": "rigid_3d",
+        "unit": "1",
+        "source": "P0 pp.5-6",
+        "status": "PAPER_CONFIRMED"
+      },
+      "base_body_type": {
+        "value": "fixed_rigid_3d",
+        "unit": "1",
+        "source": "P0 pp.5-6",
+        "status": "PAPER_CONFIRMED"
+      }
+    },
+    "material": {
+      "bulk_material": {
+        "value": "AA6061-T6",
+        "unit": "1",
+        "source": "P0 p.4",
+        "status": "PAPER_CONFIRMED"
+      },
+      "initial_density": {
+        "value": 2700.0,
+        "unit": "kg/m^3",
+        "source": "P0 p.5 Table 1 / PAPER_SPEC section 2",
+        "status": "PAPER_CONFIRMED"
+      },
+      "shear_modulus": {
+        "value": 26300000000.0,
+        "unit": "Pa",
+        "source": "P0 p.5 Table 1 / PAPER_SPEC section 2",
+        "status": "PAPER_CONFIRMED"
+      },
+      "poisson_ratio": {
+        "value": 0.33,
+        "unit": "1",
+        "source": "P0 p.5 Table 1 / PAPER_SPEC section 2",
+        "status": "PAPER_CONFIRMED"
+      },
+      "pressure_closure": {
+        "value": null,
+        "unit": "1",
+        "source": "P0 is insufficient for an executable EOS/pressure closure; ASSUMPTIONS A08",
+        "status": "UNRESOLVED"
+      },
+      "fks_parameterization": {
+        "value": null,
+        "unit": "1",
+        "source": "P0 gives a partial FKS form but b1 dimensions and required reference quantities remain unresolved; ASSUMPTIONS A02-A03",
+        "status": "UNRESOLVED"
+      },
+      "thermal_conductivity_model": {
+        "value": null,
+        "unit": "W/(m*K)",
+        "source": "P0 points to reference [40] without a complete k(T); ASSUMPTIONS A04",
+        "status": "UNRESOLVED"
+      },
+      "specific_heat_model": {
+        "value": null,
+        "unit": "J/(kg*K)",
+        "source": "P0 points to reference [40] without a complete Cp(T); ASSUMPTIONS A04",
+        "status": "UNRESOLVED"
+      },
+      "initial_temperature": {
+        "value": null,
+        "unit": "K",
+        "source": "A runnable initial thermal state is not fully specified; ASSUMPTIONS A03/A06",
+        "status": "UNRESOLVED"
+      },
+      "melting_temperature": {
+        "value": null,
+        "unit": "K",
+        "source": "Required by normalized temperature but not specified in P0; ASSUMPTIONS A03",
+        "status": "UNRESOLVED"
+      },
+      "reference_strain_rate": {
+        "value": null,
+        "unit": "1/s",
+        "source": "Required by FKS Lambda but not specified in P0; ASSUMPTIONS A03",
+        "status": "UNRESOLVED"
+      }
+    },
+    "tracers": {
+      "tracer_mode": {
+        "value": null,
+        "unit": "1",
+        "source": "Set by each case from P0 Fig.5",
+        "status": "UNRESOLVED"
+      },
+      "physical_oxide_thickness": {
+        "value": 0.000069,
+        "unit": "m",
+        "source": "P0 p.4; approximately 69 micrometres",
+        "status": "PAPER_CONFIRMED"
+      },
+      "oxide_is_resolved_material_layer": {
+        "value": false,
+        "unit": "1",
+        "source": "P0/PAPER_SPEC section 5: tagged particles are passive and do not resolve the physical film",
+        "status": "PAPER_CONFIRMED"
+      },
+      "copper_wire_diameter": {
+        "value": 0.001,
+        "unit": "m",
+        "source": "P0 p.6",
+        "status": "PAPER_CONFIRMED"
+      },
+      "local_marker_sampling_protocol": {
+        "value": null,
+        "unit": "1",
+        "source": "P0 does not fully define the Fig.5/Fig.11/Fig.12 sampling protocol; ASSUMPTIONS A09",
+        "status": "UNRESOLVED"
+      }
+    },
+    "contact_and_heat": {
+      "friction_law": {
+        "value": null,
+        "unit": "1",
+        "source": "Not closed by P0; ASSUMPTIONS A07",
+        "status": "UNRESOLVED"
+      },
+      "friction_coefficient": {
+        "value": null,
+        "unit": "1",
+        "source": "Not closed by P0; ASSUMPTIONS A07",
+        "status": "UNRESOLVED"
+      },
+      "contact_thermal_conductance": {
+        "value": null,
+        "unit": "W/(m^2*K)",
+        "source": "Not closed by P0; ASSUMPTIONS A07",
+        "status": "UNRESOLVED"
+      },
+      "plastic_work_to_heat_fraction": {
+        "value": null,
+        "unit": "1",
+        "source": "Not closed by P0; ASSUMPTIONS A07",
+        "status": "UNRESOLVED"
+      },
+      "frictional_heat_partition": {
+        "value": null,
+        "unit": "1",
+        "source": "Not closed by P0; ASSUMPTIONS A07",
+        "status": "UNRESOLVED"
+      }
+    },
+    "solver": {
+      "integrator": {
+        "value": "leapfrog_forward_difference",
+        "unit": "1",
+        "source": "P0 p.5 Table 1; actual upstream call path still requires verification",
+        "status": "PAPER_CONFIRMED"
+      },
+      "smoothing_length": {
+        "value": null,
+        "unit": "m",
+        "source": "P0 wording does not uniquely close h/spacing; ASSUMPTIONS A08",
+        "status": "UNRESOLVED"
+      },
+      "time_step": {
+        "value": null,
+        "unit": "s",
+        "source": "Must follow verified stability constraints and measured baseline; ASSUMPTIONS A08",
+        "status": "UNRESOLVED"
+      },
+      "stabilization": {
+        "value": null,
+        "unit": "1",
+        "source": "Not closed by P0; ASSUMPTIONS A08",
+        "status": "UNRESOLVED"
+      },
+      "mass_scaling_factor": {
+        "value": null,
+        "unit": "1",
+        "source": "No undisclosed mass scaling is allowed; any future value requires provenance and sensitivity testing",
+        "status": "UNRESOLVED"
+      }
+    },
+    "coordinates": {
+      "laboratory_axes": {
+        "value": null,
+        "unit": "1",
+        "source": "Implementation convention is not yet fixed; ASSUMPTIONS A11",
+        "status": "UNRESOLVED"
+      },
+      "tool_frame_definition": {
+        "value": null,
+        "unit": "1",
+        "source": "Must distinguish translating non-corotating and corotating frames; PAPER_SPEC section 7 / ASSUMPTIONS A11",
+        "status": "UNRESOLVED"
+      },
+      "advancing_side_rule": {
+        "value": "sign((omega_cross_r)_dot_Vtool)",
+        "unit": "1",
+        "source": "PAPER_SPEC section 7 implementation convention; screen mapping remains unresolved",
+        "status": "ASSUMED"
+      }
+    }
+  }
+}
+

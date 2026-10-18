@@ -1,0 +1,29 @@
+{
+  "variant": "ROTATING_SHOULDER_POINT_MASS_COMPONENT_V1",
+  "classification": "ENGINEERING_APPROXIMATE_CONTACT_COMPONENT_NOT_AFSD",
+  "production_authorized": false,
+  "units": "SI",
+  "source": "docs/ROTATING_CONTACT_CONTRACT.md; manufactured ODE benchmark, not paper calibration",
+  "parameters": {
+    "initial_position": {"value": [[0.01,0,0.0013],[0,0.012,0.0013],[-0.01,0,0.0013],[0,-0.012,0.0013]], "unit": "m", "status": "MANUFACTURED"},
+    "initial_velocity": {"value": [0,0,0], "unit": "m/s", "status": "MANUFACTURED"},
+    "mass": {"value": 0.001, "unit": "kg", "status": "MANUFACTURED_POINT_MASS_NOT_SCALED_ALUMINUM"},
+    "normal_force": {"value": 1.0, "unit": "N", "status": "PRESCRIBED_LOAD_WITH_NORMAL_ACTUATOR_REACTION"},
+    "mu": {"value": 0.2, "unit": "1", "status": "MANUFACTURED_CONSTANT"},
+    "omega": {"value": 20.0, "unit": "rad/s", "status": "PRESCRIBED_RIGID_WALL_ONLY"},
+    "traverse": {"value": 0.0, "unit": "m/s", "status": "PRESCRIBED_ZERO_NOT_MISSING"},
+    "layer": {"value": 0.0015, "unit": "m", "status": "MANUFACTURED_GEOMETRY"},
+    "tool_top": {"value": 0.02, "unit": "m", "status": "MANUFACTURED_GEOMETRY"},
+    "tool_radius": {"value": 0.02, "unit": "m", "status": "MANUFACTURED_GEOMETRY"},
+    "bore_width": {"value": 0.008, "unit": "m", "status": "OPEN_SQUARE_GEOMETRY"},
+    "dx": {"value": 0.0005, "unit": "m", "status": "CONTACT_DETECTION_RADIUS_ONLY_NOT_SPH_RESOLUTION"},
+    "substrate_depth": {"value": 0.01, "unit": "m", "status": "MANUFACTURED_BASE_LOCATION"},
+    "tool_temperature": {"value": 293.15, "unit": "K", "status": "GEOMETRY_API_INPUT_NOT_SOLVED_OR_USED"},
+    "base_temperature": {"value": 293.15, "unit": "K", "status": "GEOMETRY_API_INPUT_NOT_SOLVED_OR_USED"},
+    "end_time": {"value": 0.0008, "unit": "s", "status": "MANUFACTURED_SLIDING_INTERVAL"}
+  },
+  "dt_cases_s": [0.00002,0.00001],
+  "reference_dt_s": [0.0000001,0.00000005],
+  "run_timeout_s": 60,
+  "not_solved": ["SPH_continuum", "stress", "plasticity", "thermal", "finite_strain", "normal_penalty", "normal_opening", "feeding", "AFSD"]
+}

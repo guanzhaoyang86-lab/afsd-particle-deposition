@@ -1,0 +1,91 @@
+{
+  "extends": "rotating_deformable_block.json",
+  "remove_inherited_parameters": [
+    "normal_force"
+  ],
+  "classification": "ENGINEERING_APPROXIMATE_LOCAL_AXIAL_FEED_NOT_AFSD",
+  "production_authorized": false,
+  "parameters": {
+    "omega": {
+      "value": 0,
+      "unit": "rad/s",
+      "source": "isolate axial actuator; rotation explicitly disabled",
+      "status": "MANUFACTURED"
+    },
+    "traverse": {
+      "value": 0,
+      "unit": "m/s",
+      "source": "isolate axial actuator; no traverse",
+      "status": "MANUFACTURED"
+    },
+    "friction": {
+      "value": 0,
+      "unit": "1",
+      "source": "frictionless base isolates normal/actuator work; old friction tests retained",
+      "status": "MANUFACTURED"
+    },
+    "layer": {
+      "value": -0.009,
+      "unit": "m",
+      "source": "fixed open tool shoulder 1mm above existing base at -10mm",
+      "status": "MANUFACTURED"
+    },
+    "feed": {
+      "value": 0.00212,
+      "unit": "m/s",
+      "source": "user nominal 2.12mm/s; local boundary probe not paper validation",
+      "status": "USER_NOMINAL_LOCAL_APPROXIMATE"
+    },
+    "actuator_depth": {
+      "value": 0.0005,
+      "unit": "m",
+      "source": "initial top one layer; fixed material subset",
+      "status": "MANUFACTURED"
+    },
+    "marker_low": {
+      "value": -0.01,
+      "unit": "m",
+      "source": "whole local specimen diagnostic, not paper local marker band",
+      "status": "DIAGNOSTIC"
+    },
+    "marker_high": {
+      "value": -0.008,
+      "unit": "m",
+      "source": "whole local specimen diagnostic, not paper local marker band",
+      "status": "DIAGNOSTIC"
+    },
+    "normal_stiffness": {
+      "value": 657500,
+      "unit": "N/m",
+      "source": "inherited .05*26.3e9*dx^2/.0005",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "release_time": {
+      "value": 4e-7,
+      "unit": "s",
+      "source": "manufactured switch from prescribed axial velocity to fully free",
+      "status": "MANUFACTURED"
+    },
+    "end_time": {
+      "value": 8e-7,
+      "unit": "s",
+      "source": "manufactured bounded elastic wave/transmission interval",
+      "status": "MANUFACTURED"
+    }
+  },
+  "dt_cases_s": [
+    5e-9,
+    2.5e-9
+  ],
+  "run_timeout_s": 170,
+  "external_timeout_s": 180,
+  "boundary": "fixed rigid base z=-substrate_depth; NO fixed material; initial top0.5mm z-only drive until400ns then free; xy always free",
+  "not_solved": [
+    "thermal",
+    "rotating_bore_force_transfer",
+    "plastic_deposition",
+    "infinite_inflow",
+    "spatial_convergence",
+    "finite_strain_energy_certification"
+  ]
+}

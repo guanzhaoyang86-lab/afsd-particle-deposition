@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "classification": "ENGINEERING_APPROXIMATE_RECTANGULAR_FILL_THEN_TRACK_AFSD",
+  "base_parameters": "outputs/contact_material_search_20261004/root/resolved_config.json",
+  "base_parameters_sha256": "37a153e2df917070ed707a93abcda8709cc8468f82393fc6cc90e07071bbdfd7",
+  "parameter_overrides": {
+    "substrate_width": {
+      "value": 0.008,
+      "unit": "m",
+      "status": "DECLARED_ENGINEERING_ASSUMPTION",
+      "source": "Compatibility field means only the rectangular y width; actual substrate uses explicit x/y bounds below"
+    },
+    "bar_length": {
+      "value": 0.004,
+      "unit": "m",
+      "status": "DECLARED_ENGINEERING_ASSUMPTION",
+      "source": "Declared independent control for free hot-bar length; not a modification of the saved continuation."
+    },
+    "bore_width": {
+      "value": 0.002504,
+      "unit": "m",
+      "status": "DECLARED_ENGINEERING_ASSUMPTION",
+      "source": "Inherited stress-free nominal 2 micrometre clearance per side; not calibrated from video"
+    }
+  },
+  "geometry": {
+    "kind": "INDEPENDENT_RECTANGULAR_SUBSTRATE_AND_FINITE_SQUARE_BAR",
+    "substrate_x_bounds_m": [
+      -0.004,
+      0.007
+    ],
+    "substrate_y_bounds_m": [
+      -0.004,
+      0.004
+    ],
+    "substrate_z_bounds_m": [
+      -0.0015,
+      0.0
+    ],
+    "bar_axis_xy_m": [
+      0.0,
+      0.0
+    ],
+    "bar_bottom_z_m": 0.0,
+    "substrate_width_compatibility": "Y_EXTENT_ONLY_NOT_A_SQUARE_DOMAIN",
+    "status": "DECLARED_ENGINEERING_ASSUMPTION",
+    "source": "Complete positive-x 3 mm pass plus 2.7 mm shoulder radius and 2h=1.3 mm support buffer; no paper-size reproduction"
+  },
+  "thermal_initialization": "INHERITED_450C_HOT_START_NOT_COLD_START",
+  "interface_initialization": "INHERITED_PREBONDED_INITIAL_LOWER_BAR_NOT_NEW_DEPOSITION",
+  "feed_mode": "FINITE_MATERIAL_LABELLED_TOP_AXIAL_ACTUATOR",
+  "bar_rotation": "FREE_XY_CONTACT_DRIVEN_BY_ROTATING_SQUARE_BORE",
+  "phases": [
+    {
+      "name": "hot_rotation_and_feed_entry",
+      "duration_s": 0.02,
+      "omega_rad_s": 31.41592653589793,
+      "feed_m_s": 0.00212,
+      "traverse_m_s": 0.0,
+      "transition": "smoothstep",
+      "status": "DECLARED_ENGINEERING_ASSUMPTION",
+      "source": "Already-hot model starts rotation and axial feeding together; 20 ms is an engineering setting, not a measured heating time"
+    },
+    {
+      "name": "stationary_feed_attempt",
+      "duration_s": 0.2,
+      "omega_rad_s": 31.41592653589793,
+      "feed_m_s": 0.00212,
+      "traverse_m_s": 0.0,
+      "transition": "hold",
+      "status": "DECLARED_ENGINEERING_ASSUMPTION",
+      "source": "Paper PDF p7 motivates filling before traverse; this 0.2 s stationary feeding attempt does not assert that spreading has occurred"
+    },
+    {
+      "name": "traverse_entry",
+      "duration_s": 0.02,
+      "omega_rad_s": 31.41592653589793,
+      "feed_m_s": 0.00212,
+      "traverse_m_s": 0.00212,
+      "transition": "smoothstep",
+      "status": "DECLARED_ENGINEERING_ASSUMPTION",
+      "source": "Paper PDF p4 nominal speeds; 20 ms transition is assumed and contributes 0.0212 mm travel"
+    },
+    {
+      "name": "diagnostic_unused_track_to_1mm",
+      "duration_s": 0.46169811320754717,
+      "omega_rad_s": 31.41592653589793,
+      "feed_m_s": 0.00212,
+      "traverse_m_s": 0.00212,
+      "transition": "hold",
+      "status": "DECLARED_ENGINEERING_ASSUMPTION",
+      "source": "Unused common tail for finite-inventory planning of both controls; all comparison solves must remain in stationary feeding before 0.220 s."
+    }
+  ],
+  "process_intent": {
+    "stationary_feed_end_s": 0.22,
+    "target_total_traverse_m": 0.001,
+    "planned_axial_feed_before_traverse_m": 0.0004452,
+    "traverse_requires_observed_spreading": true,
+    "required_observation": "Initially eligible supplied material must cross the bore and plastically spread under the annular shoulder before the supervisor advances to traverse",
+    "insufficient_spreading_action": "STOP_AND_REPORT_NOT_FILLED; do not prescribe material motion or silently extend the registered fill duration",
+    "success_is_not_command_completion": true
+  },
+  "limitations": [
+    "This is an independent hot prebonded initial state, not a continuation or cropping of any old deformed checkpoint",
+    "Bar width 2.5 mm, shoulder diameter 5.4 mm and layer height 1.5 mm are inherited reduced geometry without geometric similarity to the paper",
+    "Command integrals and volume estimates do not prove passage, radial flow, deposition, convergence or metallurgical bonding",
+    "The rectangular kernel buffer is a finite-domain planning allowance, not a spatial convergence certificate",
+    "No continuous replenishment, cold-start heating, plunge or lift is introduced",
+    "Inherited quasi-static, FKS, thermal and visible-neighbour event limitations remain; unchanged force, energy and geometry gates still apply",
+    "The bar remains deformable above the 2.5 mm tool top; only the top 0.5 mm cap z is prescribed."
+  ],
+  "diagnostic_control": {
+    "classification": "INDEPENDENT_HOT_FREE_BAR_LENGTH_SENSITIVITY_NOT_PHYSICAL_VALIDATION",
+    "independent_zero_time_initialization": true,
+    "checkpoint_import": false,
+    "comparison_physical_end_limit_s": 0.12043920898437391,
+    "changed_factor": "bar_length and resulting position of the same 0.5 mm material actuator cap",
+    "limitations": [
+      "Not a proposed calibrated production geometry or a representation of cold feed/support.",
+      "Existing simulation state must not be cropped or relabelled as either control.",
+      "A response difference would be sensitivity evidence, not proof that the shorter bar is correct."
+    ]
+  }
+}

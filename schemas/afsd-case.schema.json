@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/afsd/afsd-case.schema.json",
+  "title": "AFSD incomplete paper-case configuration",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "configuration_role",
+    "parameters"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "0.1.0" },
+    "configuration_role": { "enum": ["base", "case", "resolved_case"] },
+    "extends": { "type": "string", "minLength": 1 },
+    "resolved_from": {
+      "type": "object",
+      "required": ["base", "case"],
+      "properties": {
+        "base": { "type": "string", "minLength": 1 },
+        "case": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "case_id": { "enum": ["starved", "copper-core", "overfed"] },
+    "intended_run_classification": { "enum": ["PAPER_COMPARISON", "DEBUG", "APPROXIMATE"] },
+    "variant": { "type": "string", "minLength": 1 },
+    "calculation_units": {
+      "type": "object",
+      "required": ["system", "length", "time", "mass", "temperature", "angle", "stress"],
+      "properties": {
+        "system": { "const": "SI" },
+        "length": { "const": "m" },
+        "time": { "const": "s" },
+        "mass": { "const": "kg" },
+        "temperature": { "const": "K" },
+        "angle": { "const": "rad" },
+        "stress": { "const": "Pa" }
+      },
+      "additionalProperties": false
+    },
+    "display_units": { "type": "object" },
+    "parameters": { "$ref": "#/$defs/parameter_group" }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": { "configuration_role": { "const": "base" } },
+        "required": ["configuration_role"]
+      },
+      "then": { "required": ["calculation_units", "display_units"] }
+    },
+    {
+      "if": {
+        "properties": { "configuration_role": { "const": "case" } },
+        "required": ["configuration_role"]
+      },
+      "then": { "required": ["extends", "case_id", "intended_run_classification"] }
+    },
+    {
+      "if": {
+        "properties": { "configuration_role": { "const": "resolved_case" } },
+        "required": ["configuration_role"]
+      },
+      "then": {
+        "required": [
+          "resolved_from",
+          "case_id",
+          "intended_run_classification",
+          "calculation_units",
+          "display_units"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "parameter": {
+      "type": "object",
+      "required": ["value", "unit", "source", "status"],
+      "properties": {
+        "value": {},
+        "unit": {
+          "enum": [
+            "1",
+            "m",
+            "s",
+            "kg",
+            "K",
+            "rad",
+            "Pa",
+            "m/s",
+            "rad/s",
+            "kg/m^3",
+            "W/(m*K)",
+            "J/(kg*K)",
+            "W/(m^2*K)",
+            "1/s",
+            "J"
+          ]
+        },
+        "source": { "type": "string", "minLength": 1 },
+        "status": {
+          "enum": [
+            "UNRESOLVED",
+            "PAPER_CONFIRMED",
+            "REFERENCE_CONFIRMED",
+            "DERIVED",
+            "ASSUMED",
+            "CALIBRATED"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "UNRESOLVED" } },
+            "required": ["status"]
+          },
+          "then": { "properties": { "value": { "type": "null" } } },
+          "else": { "properties": { "value": { "not": { "type": "null" } } } }
+        },
+        {
+          "if": {
+            "properties": {
+              "unit": { "not": { "const": "1" } },
+              "status": { "not": { "const": "UNRESOLVED" } }
+            },
+            "required": ["unit", "status"]
+          },
+          "then": { "properties": { "value": { "type": "number" } } }
+        },
+        {
+          "if": {
+            "properties": {
+              "unit": { "const": "1" },
+              "status": { "not": { "const": "UNRESOLVED" } }
+            },
+            "required": ["unit", "status"]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "oneOf": [
+                  { "type": "number" },
+                  { "type": "boolean" },
+                  { "type": "string", "minLength": 1 }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "parameter_group": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "oneOf": [
+          { "$ref": "#/$defs/parameter" },
+          { "$ref": "#/$defs/parameter_group" }
+        ]
+      }
+    }
+  }
+}
+

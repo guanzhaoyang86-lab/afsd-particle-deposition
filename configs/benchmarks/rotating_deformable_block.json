@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0",
+  "classification": "ENGINEERING_APPROXIMATE_ROTATING_DEFORMABLE_BLOCK_NOT_AFSD",
+  "production_authorized": false,
+  "parameters": {
+    "dx": {
+      "value": 0.0005,
+      "unit": "m",
+      "source": "existing debug/starved.json; fixed manufactured resolution",
+      "status": "NUMERICAL"
+    },
+    "h_ratio": {
+      "value": 1.3,
+      "unit": "1",
+      "source": "existing corrected operator support",
+      "status": "NUMERICAL"
+    },
+    "rho0": {
+      "value": 2700,
+      "unit": "kg/m^3",
+      "source": "configs/debug/starved.json paper-derived value; not reverified this turn",
+      "status": "INHERITED"
+    },
+    "shear": {
+      "value": 26300000000,
+      "unit": "Pa",
+      "source": "configs/debug/starved.json paper-derived value; unscaled",
+      "status": "INHERITED"
+    },
+    "poisson": {
+      "value": 0.33,
+      "unit": "1",
+      "source": "configs/debug/starved.json",
+      "status": "INHERITED"
+    },
+    "temperature": {
+      "value": 293.15,
+      "unit": "K",
+      "source": "isothermal manufactured input, no thermal solution",
+      "status": "PRESCRIBED"
+    },
+    "omega": {
+      "value": 20,
+      "unit": "rad/s",
+      "source": "rotating shoulder benchmark; NOT paper operating condition",
+      "status": "MANUFACTURED"
+    },
+    "traverse": {
+      "value": 0,
+      "unit": "m/s",
+      "source": "explicit stationary origin rotating-wall benchmark",
+      "status": "MANUFACTURED"
+    },
+    "layer": {
+      "value": 0.00195,
+      "unit": "m",
+      "source": "shoulder plane; manufactured top centre gap .0002m",
+      "status": "MANUFACTURED"
+    },
+    "tool_top": {
+      "value": 0.02,
+      "unit": "m",
+      "source": "finite geometry reused from previous component",
+      "status": "MANUFACTURED"
+    },
+    "tool_radius": {
+      "value": 0.02,
+      "unit": "m",
+      "source": "finite geometry reused from previous component",
+      "status": "MANUFACTURED"
+    },
+    "bore_width": {
+      "value": 0.008,
+      "unit": "m",
+      "source": "open bore; block stays outside bore",
+      "status": "MANUFACTURED"
+    },
+    "substrate_depth": {
+      "value": 0.01,
+      "unit": "m",
+      "source": "base face lies below block; clamp is separate benchmark fixture",
+      "status": "MANUFACTURED"
+    },
+    "base_temperature": {
+      "value": 293.15,
+      "unit": "K",
+      "source": "geometry API input only, NOT used by thermal solver",
+      "status": "PRESCRIBED_NOT_SOLVED"
+    },
+    "tool_temperature": {
+      "value": 293.15,
+      "unit": "K",
+      "source": "geometry API input only, NOT used by thermal solver",
+      "status": "PRESCRIBED_NOT_SOLVED"
+    },
+    "normal_force": {
+      "value": 1,
+      "unit": "N",
+      "source": "per top particle manufactured load, NOT solved normal reaction",
+      "status": "MANUFACTURED"
+    },
+    "friction": {
+      "value": 0.2,
+      "unit": "1",
+      "source": "frozen rotating contact benchmark coefficient",
+      "status": "MANUFACTURED"
+    },
+    "cfl": {
+      "value": 0.1,
+      "unit": "1",
+      "source": "existing debug acoustic timestep convention; necessary not sufficient stability bound",
+      "status": "NUMERICAL"
+    },
+    "width": {
+      "value": 0.002,
+      "unit": "m",
+      "source": "4 cells in x/y; physical manufactured cube",
+      "status": "MANUFACTURED"
+    },
+    "bar_length": {
+      "value": 0.002,
+      "unit": "m",
+      "source": "4 cells in z, not actual AFSD feedstock",
+      "status": "MANUFACTURED"
+    },
+    "actuator_depth": {
+      "value": 0,
+      "unit": "m",
+      "source": "make_array automatic actuator disabled; explicit boundary_role defines fixture",
+      "status": "EXPLICIT_DISABLED"
+    },
+    "marker_low": {
+      "value": 0,
+      "unit": "m",
+      "source": "whole component observation range, NOT paper local marker band",
+      "status": "MANUFACTURED_DIAGNOSTIC"
+    },
+    "marker_high": {
+      "value": 0.002,
+      "unit": "m",
+      "source": "whole component observation range, NOT paper local marker band",
+      "status": "MANUFACTURED_DIAGNOSTIC"
+    },
+    "feed": {
+      "value": 0,
+      "unit": "m/s",
+      "source": "no feed boundary in this component",
+      "status": "EXPLICIT_DISABLED"
+    },
+    "end_time": {
+      "value": 2e-7,
+      "unit": "s",
+      "source": "short integration gate, no deposition claim",
+      "status": "MANUFACTURED"
+    },
+    "a1": {
+      "value": 317600000,
+      "unit": "Pa",
+      "source": "existing material.FKS/debug config",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "a2": {
+      "value": 1000000,
+      "unit": "Pa",
+      "source": "existing material.FKS/debug config",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "a3": {
+      "value": 70,
+      "unit": "1",
+      "source": "existing material.FKS/debug config",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "b1": {
+      "value": 12.44,
+      "unit": "1",
+      "source": "existing explicit dimensionless DEBUG interpretation, Table2 contradiction unresolved",
+      "status": "UNRESOLVED_APPROXIMATE"
+    },
+    "b2": {
+      "value": 5.65,
+      "unit": "1",
+      "source": "existing material.FKS/debug config",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "c1": {
+      "value": 13,
+      "unit": "1",
+      "source": "existing material.FKS/debug config",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "c2": {
+      "value": 0.01,
+      "unit": "1",
+      "source": "existing material.FKS/debug config",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "room": {
+      "value": 293.15,
+      "unit": "K",
+      "source": "existing FKS supported solid domain",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "melt": {
+      "value": 855.15,
+      "unit": "K",
+      "source": "existing FKS supported solid domain",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "reference_rate": {
+      "value": 1,
+      "unit": "1/s",
+      "source": "existing FKS rate normalization",
+      "status": "INHERITED_APPROXIMATE"
+    },
+    "rate_floor": {
+      "value": 1,
+      "unit": "1/s",
+      "source": "existing explicit low-rate regularization, unchanged; not yield clipping",
+      "status": "INHERITED_APPROXIMATE"
+    }
+  },
+  "dt_cases_s": [
+    5e-9,
+    2.5e-9
+  ],
+  "initial_geometry": {
+    "centers_per_axis": 4,
+    "x_center_m": 0.01,
+    "y_center_m": 0,
+    "z_min_cell_boundary_m": 0,
+    "velocity_m_s": [
+      0,
+      0,
+      0
+    ],
+    "stress_Pa": 0,
+    "source": "ROTATING_DEFORMABLE_CONTRACT manufactured literal cube",
+    "status": "MANUFACTURED_NOT_AFSD"
+  },
+  "boundary": "bottom16 xyz clamp; top16 z clamp + prescribed Fn; other32 xyz free",
+  "run_timeout_s": 110,
+  "external_timeout_s": 120,
+  "not_solved": [
+    "thermal",
+    "normal_opening",
+    "feed",
+    "deposition",
+    "finite_strain_energy_validation",
+    "paper_comparison",
+    "spatial_convergence"
+  ]
+}

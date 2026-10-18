@@ -1,0 +1,26 @@
+{
+  "classification": "ENGINEERING_APPROXIMATE_QUASISTATIC_J2_TWO_TANGENT_FRICTION_BENCHMARK",
+  "production_authorized": false,
+  "parent": "configs/benchmarks/process_friction_cone_q6.json",
+  "parameters": {
+    "yield_stress": {"value": 90000000.0, "unit": "Pa", "source": "unchanged Q2/E1 perfect plastic manufactured J2 constant", "status": "MANUFACTURED_NOT_AA6061_NOT_FKS"},
+    "temperature": {"value": 293.15, "unit": "K", "source": "unchanged Q2/Q6 prescribed input", "status": "PRESCRIBED_NOT_SOLVED"},
+    "young": {"value": 70000000000.0, "unit": "Pa", "source": "unchanged E2/Q2/Q6 block", "status": "MANUFACTURED_NOT_CALIBRATED"},
+    "poisson": {"value": 0.0, "unit": "1", "source": "unchanged E2/Q2/Q6 block", "status": "MANUFACTURED_NOT_CALIBRATED"},
+    "density": {"value": 2700.0, "unit": "kg/m^3", "source": "unchanged Q6 mass", "status": "PRESCRIBED_REFERENCE_DENSITY"},
+    "mu": {"value": 0.1, "unit": "1", "source": "unchanged Q6 manufactured circular cone", "status": "ASSUMED_NOT_CALIBRATED"},
+    "normal_displacement": {"value": -0.00004, "unit": "m", "source": "unchanged Q6 preload/hold", "status": "PRESCRIBED_RIGID_BOUNDARY"},
+    "tangent_amplitude": {"value": 0.00002, "unit": "m", "source": "unchanged Q6 wall tangent magnitude", "status": "MANUFACTURED"},
+    "tangent_direction_global_yz": {"value": [0.6, 0.8], "unit": "1", "source": "unchanged Q6 oblique rigid wall direction", "status": "MANUFACTURED"},
+    "phase_duration": {"value": 0.05, "unit": "s", "source": "unchanged Q6 four-phase time program", "status": "MANUFACTURED"}
+  },
+  "boundary": "Unchanged 1cm cube, 27 points, X0 fully clamped; nine X+ fixed-normal rigid wall contacts, both tangents Coulomb. Other material DOFs solved. No normal detachment/recontact.",
+  "numerical": {
+    "inherited": "Q6 force 9e-5N, slip1e-11m, work1e-6J, raw negative frictionQ -1e-10J; Newton12/line-search8/events12/bisection40/condK1e12/condM1e6 unchanged",
+    "energy_diagnostic_warning_J": 0.000001,
+    "energy_diagnostic_warning_basis": "Same 1e-6J reporting scale as Q2 contact-work contract. Ws-Es-P is a reported material/quadrature warning, never added to friction/plastic heat or silently used to reject/rectify raw fields. Not a production energy certificate."
+  },
+  "cases": [4, 8],
+  "run_timeout_s": 60,
+  "not_solved": ["normal_release_recontact", "thermal", "FKS_friction", "inertia", "rotating_normal_or_tool", "arbitrary_curved_slip_path", "AFSD", "production_restart", "spatial_convergence", "finite_strain_energy"]
+}

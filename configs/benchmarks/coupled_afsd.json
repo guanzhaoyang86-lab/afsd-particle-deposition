@@ -1,0 +1,29 @@
+{
+  "classification": "ENGINEERING_APPROXIMATE_COUPLED_AFSD_LOCAL_DEBUG",
+  "parent": "configs/debug/starved.json",
+  "production_authorized": false,
+  "parameters": {
+    "substrate_width": {"value": 0.004, "unit": "m", "source": "bounded integration specimen; reduced lateral geometry, not paper dimensions", "status": "DEBUG_GEOMETRY"},
+    "bar_length": {"value": 0.003, "unit": "m", "source": "bounded finite feedstock; not continuous inlet", "status": "DEBUG_GEOMETRY"},
+    "tool_top": {"value": 0.0025, "unit": "m", "source": "bore ends below top actuator layer; unchanged finite-face approximation", "status": "DEBUG_GEOMETRY"},
+    "feed": {"value": 0.00212, "unit": "m/s", "source": "user common nominal middle axial-feed condition; inherited paper interpretation", "status": "USER_NOMINAL"},
+    "release_time": {"value": 1.0, "unit": "s", "source": "axial actuator stays active throughout registered microsecond trial; no release history claim", "status": "ASSUMED_PROGRAM"},
+    "marker_low": {"value": 0.002, "unit": "m", "source": "local specimen diagnostic band, not paper 3-4mm band", "status": "DIAGNOSTIC"},
+    "marker_high": {"value": 0.003, "unit": "m", "source": "local specimen diagnostic band; wholebar_tag remains separate", "status": "DIAGNOSTIC"}
+  },
+  "geometry_note": "342 particles:192 deformable substrate+150 deformable feedstock. dx=.5mm; depth and layer1.5mm=3dx. Shared material NNPS gives explicitly pre-bonded interface. Rigid base and open rotating square bore; centre-collocated wall force/velocity.",
+  "maximum_displacement_m": 0.00005,
+  "cost_probe_steps": 5,
+  "registered_end_times_s": [0.000002, 0.000004],
+  "registered_cfl": 0.1,
+  "internal_wall_seconds": 540,
+  "external_wall_seconds": 570,
+  "forecast_launch_limit_seconds": 450,
+  "forecast_multiplier": 1.5,
+  "forecast_overhead_seconds": 30,
+  "history_every_steps": 1,
+  "journal_every_steps": 1,
+  "vtk_every_steps": 10,
+  "maximum_physics_attempts": 1,
+  "scope": "one integrated attempt selected by measured cost, not repeated parameter tuning; four mechanisms implemented, sustained plastic deposition not presumed"
+}

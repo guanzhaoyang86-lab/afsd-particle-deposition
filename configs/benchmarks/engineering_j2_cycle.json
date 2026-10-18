@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "classification": "MATERIAL_POINT_BENCHMARK",
+  "material_variant": "BENCHMARK_ISOTHERMAL_PERFECT_PLASTIC_J2",
+  "backend_commit": "1cd3dea9cfaac7d9f1bda2a2491ce4b42a31dbe5",
+  "production_authorized": false,
+  "parameters": {
+    "shear": {
+      "value": 30000000000,
+      "unit": "Pa",
+      "source": "E1 manufactured scalar reference; not AA6061",
+      "status": "MANUFACTURED_BENCHMARK_NOT_ALLOY_DATA"
+    },
+    "yield_stress": {
+      "value": 90000000,
+      "unit": "Pa",
+      "source": "E1 manufactured scalar reference; not AA6061",
+      "status": "MANUFACTURED_BENCHMARK_NOT_ALLOY_DATA"
+    },
+    "reference_volume": {
+      "value": 0.000001,
+      "unit": "m^3",
+      "source": "E1 prescribed isochoric reference volume",
+      "status": "MANUFACTURED_BENCHMARK_NOT_ALLOY_DATA"
+    },
+    "temperature": {
+      "value": 293.15,
+      "unit": "K",
+      "source": "E1 prescribed isothermal input",
+      "status": "PRESCRIBED_NOT_THERMALLY_SOLVED"
+    },
+    "peak_log_strain": {
+      "value": 0.004,
+      "unit": "1",
+      "source": "E1 analytical forward/reverse yielding path",
+      "status": "MANUFACTURED_BENCHMARK_NOT_ALLOY_DATA"
+    },
+    "segment_duration": {
+      "value": 1,
+      "unit": "s",
+      "source": "E1 prescribed rate-independent path duration",
+      "status": "MANUFACTURED_BENCHMARK_NOT_ALLOY_DATA"
+    },
+    "directions": {
+      "value": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0.3333333333333333,
+          0.6666666666666666,
+          0.6666666666666666
+        ]
+      ],
+      "unit": "1",
+      "source": "three axes and normalized oblique [1,2,2]",
+      "status": "MANUFACTURED_BENCHMARK_NOT_ALLOY_DATA"
+    },
+    "aligned_steps": {
+      "value": [
+        16,
+        32,
+        64
+      ],
+      "unit": "1",
+      "source": "E1 exact event-aligned diagnostic sequence",
+      "status": "MANUFACTURED_BENCHMARK_NOT_ALLOY_DATA"
+    },
+    "unaligned_steps": {
+      "value": [
+        17,
+        33,
+        65
+      ],
+      "unit": "1",
+      "source": "E1 N=1 mod4 consistent non-aligned refinement",
+      "status": "MANUFACTURED_BENCHMARK_NOT_ALLOY_DATA"
+    }
+  },
+  "tolerances": {
+    "stress_relative": 1e-10,
+    "ep_absolute": 1e-12,
+    "energy_absolute_J": 1e-10,
+    "unaligned_finest_relative": 0.001,
+    "continuous_work_error_ratio": 0.4
+  },
+  "sources": {
+    "radial_return": "https://mooseframework.inl.gov/source/materials/RadialReturnStressUpdate.html",
+    "actual_updater": "src/afsd_backend/pysph/material.py::update",
+    "derivation": "docs/ENGINEERING_MATERIAL_E1.md"
+  },
+  "not_solved": [
+    "spatial_mechanics",
+    "thermal",
+    "contact",
+    "afsd",
+    "AA6061_calibration"
+  ]
+}

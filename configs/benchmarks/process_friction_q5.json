@@ -1,0 +1,29 @@
+{
+  "classification": "ENGINEERING_APPROXIMATE_QUASISTATIC_DIRECTIONAL_FRICTION_BENCHMARK",
+  "production_authorized": false,
+  "parent": "configs/benchmarks/process_contact_q3.json",
+  "parameters": {
+    "mu": {"value": 0.1, "unit": "1", "source": "manufactured directional Coulomb test, not calibrated tool friction", "status": "ASSUMED_BENCHMARK"},
+    "normal_displacement": {"value": -0.00004, "unit": "m", "source": "Q3 amplitude, held after preload", "status": "PRESCRIBED_RIGID_BOUNDARY"},
+    "tangent_amplitude": {"value": 0.00002, "unit": "m", "source": "short displacement to exercise sticking/sliding and reversal", "status": "ASSUMED_BENCHMARK"},
+    "phase_duration": {"value": 0.05, "unit": "s", "source": "four-phase manufactured quasi-static program", "status": "ASSUMED_BENCHMARK"},
+    "temperature": {"value": 293.15, "unit": "K", "source": "unchanged elastic-only Q3 input", "status": "PRESCRIBED_NOT_SOLVED"}
+  },
+  "material": "Actual Q2/Q3 corotational update, elastic-only manufactured yield1e12Pa, E70GPa nu0. Not AA6061 calibration.",
+  "boundary": "Only X=0 face clamped in all3 components; all other support rollers removed in this new benchmark. X=L nine normal contacts remain compressed; Y directional Coulomb friction; Z traction zero. Normal detachment is unsupported and must BLOCK.",
+  "schedule": "0-.05 normal0->-40um with wallY0; .05-.1 wallY0->+20um; .1-.15 +20->-20um; .15-.2 -20->0um. normal held after .05. All program corners accepted.",
+  "numerical": {
+    "force_tolerance_N": 0.00009,
+    "slip_tolerance_m": 1e-11,
+    "work_tolerance_J": 1e-6,
+    "negative_dissipation_tolerance_J": 1e-10,
+    "maximum_active_sets": 16,
+    "maximum_events_per_interval": 12,
+    "event_bisections": 40,
+    "event_time_tolerance_s": 1e-12,
+    "mode_probe_fraction": 0.0001
+  },
+  "cases": [4,8],
+  "run_timeout_s": 60,
+  "not_solved": ["isotropic_two_tangent_friction", "normal_release_recontact", "plasticity_with_friction", "thermal", "inertia", "rotating_tool", "AFSD", "production_restart", "spatial_convergence"]
+}

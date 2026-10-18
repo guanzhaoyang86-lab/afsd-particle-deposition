@@ -1,0 +1,35 @@
+# Local environments and generated files
+.envs/
+.deps/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+build/
+dist/
+*.egg-info/
+logs/
+papers/
+.env
+.env.*
+*.pem
+*.key
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.vtk
+*.vtu
+*.vtp
+*.mp4
+*.avi
+*.pdf
+# Campaign source files and three model inputs are intentionally versioned.
+outputs/**
+!outputs/**/
+!outputs/**/*.py
+!outputs/contact_material_search_20261004/root/resolved_config.json
+!outputs/flow_diagnostic_20261013_v1/length_controls/short_4p0mm.json
+!outputs/flow_diagnostic_20261013_v1/length_controls/long_6p5mm.json

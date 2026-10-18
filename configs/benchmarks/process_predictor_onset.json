@@ -1,0 +1,16 @@
+{
+  "variant": "Q7_PREDICTOR_ONSET_V1",
+  "parent": "configs/benchmarks/process_plastic_friction_onset.json",
+  "production_authorized": false,
+  "classification": "ENGINEERING_APPROXIMATE_FIXED_NORMAL_PREDICTOR_ONSET_NOT_AFSD",
+  "maximum_total_corrections": 14,
+  "run_timeout_s": 180,
+  "permitted_cases": [
+    4,
+    8
+  ],
+  "predictor": "Reuse solve_with_feasible_predictor without changes; noncontact free DOFs equilibrate only if initial raw N<0; predictor+cone share14",
+  "unchanged": "Onset event classification/bracketing, material, geometry, boundary, work, root tolerances, line search and atomic commit",
+  "source": "docs/PROCESS_FEASIBLE_PREDICTOR_REPORT.md; docs/PROCESS_PREDICTOR_ONSET_CONTRACT.md",
+  "status": "NUMERICAL_INITIAL_GUESS_INTEGRATION_NOT_CALIBRATION"
+}

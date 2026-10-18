@@ -1,0 +1,29 @@
+{
+  "classification": "ENGINEERING_APPROXIMATE_QUASISTATIC_SMALL_STRAIN_UNILATERAL_CONTACT_BENCHMARK",
+  "production_authorized": false,
+  "parent": "configs/benchmarks/process_plastic_q2.json",
+  "parameters": {
+    "length": {"value": 0.01, "unit": "m", "source": "unchanged E2/Q1/Q2 manufactured cube", "status": "MANUFACTURED"},
+    "peak_wall_displacement": {"value": -0.00004, "unit": "m", "source": "Q2 actuator program, now rigid wall not material trajectory", "status": "PRESCRIBED_RIGID_BOUNDARY"},
+    "phase_duration": {"value": 0.1, "unit": "s", "source": "unchanged Q2 physical loading and return times", "status": "ASSUMED_BENCHMARK"},
+    "elastic_yield": {"value": 1e12, "unit": "Pa", "source": "E2 elastic-only benchmark; no yielding in stated path", "status": "MANUFACTURED_NOT_AA6061"},
+    "j2_yield": {"value": 90000000, "unit": "Pa", "source": "unchanged Q2 perfect plastic benchmark", "status": "MANUFACTURED_NOT_AA6061"},
+    "temperature": {"value": 293.15, "unit": "K", "source": "unchanged prescribed E2/J2 input", "status": "PRESCRIBED_NOT_SOLVED"}
+  },
+  "boundary": "X=0 ux=0; Y=0 uy=0; Z=0 uz=0. Rigid frictionless platen at x=L+d(t). Only initial X=L boundary nodes are contact candidates. No tensile contact or cap displacement constraint while separated.",
+  "normal": [-1, 0, 0],
+  "numerical": {
+    "force_relative": 1e-8,
+    "contact_force_tolerance_N": 0.00009,
+    "gap_tolerance_m": 1e-11,
+    "work_tolerance_J": 1e-6,
+    "maximum_active_sets": 16,
+    "maximum_events_per_requested_interval": 12,
+    "event_bisections": 40,
+    "event_time_tolerance_s": 1e-12,
+    "tangent_condition_limit": 1e12
+  },
+  "cases": [["elastic",3,8],["j2",3,8],["j2",3,16]],
+  "run_timeout_s": 60,
+  "not_solved": ["friction", "thermal", "inertia", "FKS_contact", "finite_strain_density", "rotating_or_multiface_3D_contact", "AFSD", "production_restart"]
+}

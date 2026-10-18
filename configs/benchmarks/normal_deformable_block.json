@@ -1,0 +1,78 @@
+{
+  "extends": "rotating_deformable_block.json",
+  "classification": "ENGINEERING_APPROXIMATE_NORMAL_RELEASE_SPH_NOT_AFSD",
+  "production_authorized": false,
+  "parameters": {
+    "normal_force": {
+      "value": 1,
+      "unit": "N",
+      "source": "initial target only used to describe overlap=1/kn; actual force recomputed from gap every step",
+      "status": "INITIAL_TARGET_NOT_PRESCRIBED_FORCE_LAW"
+    },
+    "layer": {
+      "value": 0.0019984790874524715,
+      "unit": "m",
+      "source": "initial top overlap=1/kn; contact preload not material equilibrium",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "normal_stiffness": {
+      "value": 657500,
+      "unit": "N/m",
+      "source": "unchanged original scale .05*26.3e9*dx²/.0005",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "penalty_factor": {
+      "value": 0.05,
+      "unit": "1",
+      "source": "existing debug/solver penalty scale",
+      "status": "INHERITED"
+    },
+    "contact_reference_spacing": {
+      "value": 0.0005,
+      "unit": "m",
+      "source": "fixed original traction-stiffness scale",
+      "status": "INHERITED"
+    },
+    "lift_start": {
+      "value": 2e-7,
+      "unit": "s",
+      "source": "manufactured hold until200ns",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "lift_speed": {
+      "value": 20,
+      "unit": "m/s",
+      "source": "rigid wall-only lift after200ns; NOT paper program",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "end_time": {
+      "value": 6e-7,
+      "unit": "s",
+      "source": "hold200ns + unload/open400ns",
+      "status": "MANUFACTURED_APPROXIMATE"
+    },
+    "initial_contact_energy": {
+      "value": 0.000012167300380228136,
+      "unit": "J",
+      "source": "16 top particles each Fn0=1N, U0=Fn0²/(2kn); supplied initial spring energy",
+      "status": "MANUFACTURED_APPROXIMATE"
+    }
+  },
+  "dt_cases_s": [
+    5e-9,
+    2.5e-9
+  ],
+  "boundary": "bottom16 xyzfixed; allother48 xyzfree; top role is observation ONLY",
+  "run_timeout_s": 170,
+  "external_timeout_s": 180,
+  "normal_law": "UNILATERAL_LINEAR_ELASTIC_PENALTY; NO_DAMPING",
+  "not_solved": [
+    "thermal",
+    "plastic_flow_validation",
+    "bore_face_dynamic_transfer",
+    "feed",
+    "deposition",
+    "spatial_refinement",
+    "finite_strain_energy_certification"
+  ]
+}

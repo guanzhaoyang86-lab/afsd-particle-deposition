@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schemas/afsd-case.schema.json",
+  "schema_version": "0.1.0",
+  "configuration_role": "case",
+  "extends": "../base.json",
+  "case_id": "starved",
+  "intended_run_classification": "PAPER_COMPARISON",
+  "parameters": {
+    "process": {
+      "feedstock_axial_speed": {
+        "value": 0.00106,
+        "unit": "m/s",
+        "source": "P0 p.4 axial feed; p.6 wording conflict retained in ASSUMPTIONS A01",
+        "status": "PAPER_CONFIRMED"
+      }
+    },
+    "tracers": {
+      "tracer_mode": {
+        "value": "OXIDE_SURFACE_PROXY",
+        "unit": "1",
+        "source": "P0 Fig.5 external marker experiment",
+        "status": "PAPER_CONFIRMED"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,15 @@
+{
+  "variant": "Q7_BOUNDARY_ELIGIBILITY_V1",
+  "parent": "configs/benchmarks/process_plastic_friction_q7_recovery.json",
+  "production_authorized": false,
+  "classification": "ENGINEERING_APPROXIMATE_FIXED_NORMAL_ONSET_NOT_AFSD",
+  "eligibility": "abs(mu*N_old-norm(tau_old)) <= existing force_tolerance_N AND mu*N_old > force_tolerance_N; no force projection",
+  "resolved_inward": "coupled probe margin > existing force_tolerance_N removes eligibility; other eligible rows may still stick under the natural-map equation",
+  "zero_capacity": "not pre-released; held-normal preload and original strict interior event search retained",
+  "maximum_iterations": 14,
+  "run_timeout_s": 60,
+  "permitted_cases": [4, 8],
+  "unchanged": "material, physical geometry, limits, work formula, shared tangent, strict interior bracketing, final atomic commit",
+  "source": "docs/PROCESS_PLASTIC_FRICTION_Q7_RECOVERY_AUDIT.md and independently derived onset references",
+  "status": "NUMERICAL_EVENT_CLASSIFICATION_VARIANT_NOT_CALIBRATION"
+}

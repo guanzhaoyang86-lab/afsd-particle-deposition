@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "classification": "ENGINEERING_APPROXIMATE_HOT_PROCESS_FRAMEWORK",
+  "base_parameters": "outputs/contact_material_search_20261004/root/resolved_config.json",
+  "base_parameters_sha256": "37a153e2df917070ed707a93abcda8709cc8468f82393fc6cc90e07071bbdfd7",
+  "parameter_overrides": {
+    "substrate_width": {"value": 0.010, "unit": "m", "status": "DECLARED_ENGINEERING_ASSUMPTION", "source": "Full planned pass plus shoulder and 2h kernel buffer; not a paper dimension"},
+    "bore_width": {"value": 0.002504, "unit": "m", "status": "DECLARED_ENGINEERING_ASSUMPTION", "source": "Existing independent hot initialization: 2 micrometre unloaded clearance on each side"}
+  },
+  "thermal_initialization": "INHERITED_450C_HOT_START_NOT_COLD_START",
+  "interface_initialization": "INHERITED_PREBONDED_INITIAL_LOWER_BAR_NOT_NEW_DEPOSITION",
+  "feed_mode": "FINITE_MATERIAL_LABELLED_TOP_AXIAL_ACTUATOR",
+  "bar_rotation": "FREE_XY_CONTACT_DRIVEN_BY_ROTATING_SQUARE_BORE",
+  "phases": [
+    {"name": "hot_spinup", "duration_s": 0.020, "omega_rad_s": 31.41592653589793, "feed_m_s": 0.0, "traverse_m_s": 0.0, "transition": "smoothstep", "status": "DECLARED_ENGINEERING_ASSUMPTION", "source": "P0 PDF p7 motivates separate startup; 20 ms is an engineering setting, not a measured dwell"},
+    {"name": "hot_feed_conditioning", "duration_s": 0.020, "omega_rad_s": 31.41592653589793, "feed_m_s": 0.00212, "traverse_m_s": 0.0, "transition": "smoothstep", "status": "DECLARED_ENGINEERING_ASSUMPTION", "source": "P0 PDF p7 motivates feeding before traverse; duration and fixed-height hot initialization are assumptions"},
+    {"name": "traverse_entry", "duration_s": 0.020, "omega_rad_s": 31.41592653589793, "feed_m_s": 0.00212, "traverse_m_s": 0.00212, "transition": "smoothstep", "status": "DECLARED_ENGINEERING_ASSUMPTION", "source": "P0 PDF p4 gives nominal velocities; transition duration is an engineering setting"},
+    {"name": "single_pass", "duration_s": 0.100, "omega_rad_s": 31.41592653589793, "feed_m_s": 0.00212, "traverse_m_s": 0.00212, "transition": "hold", "status": "DECLARED_ENGINEERING_ASSUMPTION", "source": "Finite illustrative pass; not a duration measured from the edited commercial video"}
+  ],
+  "limitations": [
+    "2.5 mm bar and 5.4 mm shoulder are inherited reduced geometry, not paper-scale reproduction",
+    "No tool plunge, lift or cold heating simulation in this hot-start configuration",
+    "No continuous inflow, no metallurgical bonding model, no experimental calibration",
+    "Inherited FKS low-rate, quasi-static, spatial and thermal approximations remain",
+    "Visibility switching must be reported and re-solved; phase scheduling does not repair it"
+  ]
+}

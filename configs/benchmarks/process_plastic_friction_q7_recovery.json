@@ -1,0 +1,11 @@
+{
+  "variant": "Q7R_BOUNDED_NEWTON14",
+  "parent": "configs/benchmarks/process_plastic_friction_q7.json",
+  "production_authorized": false,
+  "maximum_iterations": {"value": 14, "unit": "count", "status": "NUMERICAL_BUDGET_NOT_PHYSICS", "source": "Q7 fixed 12/14 diagnostic: branch root at correction 13, still requires existing cone event checks"},
+  "baseline_maximum_iterations": 12,
+  "run_timeout_s": 60,
+  "permitted_cases": [4, 8],
+  "unchanged": "All physics, geometry, constraints, tolerances, active-set/event/line-search budgets and material update are inherited unchanged. No retries with increasing budgets.",
+  "preregistration": "docs/PROCESS_PLASTIC_FRICTION_Q7_RECOVERY_CONTRACT.md"
+}

@@ -1,0 +1,19 @@
+{
+  "classification": "ENGINEERING_APPROXIMATE_SMALL_STRAIN_REFERENCE_CONFIGURATION",
+  "production_authorized": false,
+  "parameters": {
+    "length": {"value": 0.01, "unit": "m", "source": "E2 manufactured cube", "status": "MANUFACTURED_NOT_AFSD"},
+    "rho0": {"value": 2700, "unit": "kg/m^3", "source": "E2 manufactured density", "status": "MANUFACTURED_NOT_ALLOY_CALIBRATION"},
+    "young": {"value": 70000000000, "unit": "Pa", "source": "E2 manufactured elastic law", "status": "MANUFACTURED_NOT_ALLOY_CALIBRATION"},
+    "poisson": {"value": 0, "unit": "1", "source": "E2 explicit zero Poisson ratio for 3D analytical wave", "status": "MANUFACTURED_NOT_ALLOY_CALIBRATION"},
+    "alpha": {"value": 0.00001, "unit": "1", "source": "E2 small-strain reference amplitude", "status": "PRESCRIBED_LOAD_PARAMETER"},
+    "temperature": {"value": 293.15, "unit": "K", "source": "E2 isothermal input", "status": "PRESCRIBED_NOT_SOLVED"},
+    "yield_stress": {"value": 1000000000000, "unit": "Pa", "source": "E2 test-only high yield to disable plasticity", "status": "MANUFACTURED_NOT_ALLOY_CALIBRATION"},
+    "h_ratio": {"value": 1.3, "unit": "1", "source": "existing corrected operator support convention", "status": "NUMERICAL_PARAMETER"}
+  },
+  "time_cases": [[5, 0.1], [5, 0.05], [5, 0.025]],
+  "space_cases": [[5, 0.05], [7, 0.05], [9, 0.05]],
+  "tolerances": {"mass_relative": 1e-12, "interface_relative": 1e-11, "force_torque_relative": 1e-10, "energy_relative": 0.01, "displacement_relative": 0.1, "stress_relative": 0.2, "reaction_relative": 0.2, "transverse_relative": 0.05, "spatial_error_ratio": 0.9, "time_difference_relative": 0.01, "time_difference_ratio": 0.4},
+  "not_solved": ["thermal", "unilateral_contact", "plasticity_validation", "finite_strain_density", "AA6061", "AFSD"],
+  "run_timeout_s": 60
+}

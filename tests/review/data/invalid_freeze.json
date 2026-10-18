@@ -1,0 +1,4 @@
+{
+  "backend_commit": "1cd3dea9cfaac7d9f1bda2a2491ce4b42a31dbe5",
+  "files_sha256": {"AGENTS.md": "deliberately_invalid_hash_for_guard_test"}
+}

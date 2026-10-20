@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-20",
+  "language": "English",
+  "model_status": "ENGINEERING_APPROXIMATE",
+  "video": {
+    "duration_s": 40,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "frames": 1200,
+    "codec": "H.264"
+  },
+  "preview": {
+    "width": 960,
+    "height": 540,
+    "nominal_fps": 6,
+    "frames": 240,
+    "duration_s": 39.99
+  },
+  "physical_time_s": [
+    0,
+    0.18328511524198832
+  ],
+  "source_particle_count": 1256,
+  "selected_source_states": 222,
+  "displayed_source_states": 215,
+  "fresh_particle_crossings": [
+    0,
+    14
+  ],
+  "fresh_particles_beneath_shoulder": 0,
+  "notes": [
+    "Recorded particle states from a finite-bar engineering-approximate simulation.",
+    "The initial state already contains feedstock and substrate; zero means no fresh particles have crossed the exit.",
+    "No interpolated particle trajectories or displacement magnification. Camera movement is for viewing only.",
+    "This visualizes outlet passage; sustained shoulder deposition has not been established.",
+    "The animated preview is a reduced-frame-rate copy of the full video; GIF timing is quantized to 10 ms."
+  ],
+  "validation": {
+    "full_video_decode": "PASS",
+    "all_1200_frame_mappings": "PASS",
+    "unchanged_source_hashes": "PASS",
+    "english_visual_review": "PASS",
+    "new_physical_solver_evaluations": 0
+  },
+  "files": {
+    "afsd-feed-through-en.mp4": {
+      "sha256": "9539d20cc37678de4d3b8e0d5f7e0fd1fa33b25d2ffc0561e43812de5ca19616",
+      "bytes": 17824039
+    },
+    "afsd-feed-through-preview.gif": {
+      "sha256": "fd0aa0ce0f37ec8f296c0efd3900106f4a873495e8faf46b3c1fa81df187971f",
+      "bytes": 8424547
+    }
+  }
+}

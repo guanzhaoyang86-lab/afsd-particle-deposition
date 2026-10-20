@@ -33,3 +33,6 @@ outputs/**
 !outputs/contact_material_search_20261004/root/resolved_config.json
 !outputs/flow_diagnostic_20261013_v1/length_controls/short_4p0mm.json
 !outputs/flow_diagnostic_20261013_v1/length_controls/long_6p5mm.json
+
+# Public demonstration video featured on the repository homepage.
+!docs/media/afsd-feed-through-en.mp4
